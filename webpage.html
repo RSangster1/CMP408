@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Pi Hardware Data</title>
+    </head>
+    <body>
+        <h1>Pi Hardware Data</h1>
+        <div id="PiData"></div>
+
+    <script>
+        fetch('pi_data.json')
+        .then(response => response.json())
+        .then(data => {
+        document.getElementById('PiData').innerHTML = `
+        <p><strong> Date/Time: </strong> ${data["date/time"]}</p>
+        <p><strong> CPU Frequency: </strong> ${data.cpu_freq.join(', ')} MHz</p>
+        <p><strong> Temperature: </strong> ${data.temperature} °C</p>
+        <p><strong> CPU Percent: </strong> ${data.cpu_percent}%</p>
+        <p><strong> CPU Count: </strong> ${data.cpu_count}</p>
+        <p><strong> Memory Total: </strong> ${data.memory_total} bytes</p>
+        <p><strong> Disk Total: </strong> ${data.disk_total}</p>
+        `;
+        })
+
+    
+
+    </script>
+    </body>
+</html>
